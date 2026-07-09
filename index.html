@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anshu Medicine Center | Trusted Chemist in Phulwarisharif, Patna</title>
+<meta name="description" content="Anshu Medicine Center - Your trusted neighbourhood pharmacy in Phulwarisharif, Patna. Order medicines on WhatsApp, upload prescription, fast home delivery." />
+<link rel="icon" href="logo.svg" type="image/svg+xml" />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<style>
+  :root {
+    --primary-blue: #1F4E7A;
+    --secondary-blue: #2C6FA6;
+    --light-blue: #E8F1F9;
+    --accent-green: #3FB255;
+    --light-green: #A8D468;
+    --pale-green: #EAF6EC;
+    --dark-text: #1A2332;
+    --muted-text: #5A6879;
+    --off-white: #F8FAFC;
+    --white: #ffffff;
+    --whatsapp: #25D366;
+    --shadow-sm: 0 2px 6px rgba(31,78,122,0.08);
+    --shadow-md: 0 8px 24px rgba(31,78,122,0.12);
+    --shadow-lg: 0 20px 50px rgba(31,78,122,0.18);
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    color: var(--dark-text);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; color: var(--primary-blue); line-height: 1.25; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ========== TOP BAR ========== */
+  .top-bar {
+    background: var(--primary-blue);
+    color: var(--white);
+    font-size: 13px;
+    padding: 8px 0;
+  }
+  .top-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .top-info { display: flex; gap: 22px; flex-wrap: wrap; }
+  .top-info span i { color: var(--light-green); margin-right: 6px; }
+  .top-social a {
+    color: var(--white);
+    margin-left: 12px;
+    transition: color .2s;
+  }
+  .top-social a:hover { color: var(--light-green); }
+
+  /* ========== HEADER ========== */
+  header {
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-logo {
+    height: 62px;
+    width: auto;
+  }
+  .brand-text h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 2px;
+  }
+  .brand-text p {
+    font-size: 12px;
+    color: var(--muted-text);
+    letter-spacing: .5px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  nav a {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--dark-text);
+    position: relative;
+    padding: 6px 0;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--primary-blue); }
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent-green);
+    transition: width .3s;
+  }
+  nav a:hover::after { width: 100%; }
+
+  .header-cta {
+    background: var(--whatsapp);
+    color: var(--white) !important;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.35);
+  }
+  .header-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37,211,102,0.5); }
+
+  .menu-toggle {
+    display: none;
+    font-size: 22px;
+    color: var(--primary-blue);
+  }
+
+  /* ========== SLIDER / HERO ========== */
+  .hero-slider {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #E8F1F9 0%, #EAF6EC 100%);
+  }
+  .slides {
+    display: flex;
+    transition: transform .8s cubic-bezier(.65,.05,.36,1);
+  }
+  .slide {
+    min-width: 100%;
+    padding: 70px 0 90px;
+  }
+  .slide-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .slide-content .eyebrow {
+    display: inline-block;
+    background: var(--pale-green);
+    color: var(--accent-green);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .slide-content h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  .slide-content h2 span {
+    color: var(--accent-green);
+  }
+  .slide-content p {
+    font-size: 16px;
+    color: var(--muted-text);
+    margin-bottom: 28px;
+    max-width: 520px;
+  }
+  .slide-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 6px 18px rgba(31,78,122,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(31,78,122,0.4); }
+  .btn-whatsapp {
+    background: var(--whatsapp);
+    color: var(--white);
+    box-shadow: 0 6px 18px rgba(37,211,102,0.35);
+  }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(37,211,102,0.5); }
+  .btn-outline {
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    background: transparent;
+  }
+  .btn-outline:hover { background: var(--primary-blue); color: var(--white); }
+
+  .slide-visual {
+    position: relative;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .visual-circle {
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--white), var(--light-blue));
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .visual-circle .big-icon {
+    font-size: 130px;
+    color: var(--primary-blue);
+  }
+  .float-badge {
+    position: absolute;
+    background: var(--white);
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .float-badge i {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    font-size: 14px;
+  }
+  .fb-1 { top: 20px; left: -20px; animation: floaty 4s ease-in-out infinite; }
+  .fb-1 i { background: var(--accent-green); }
+  .fb-2 { bottom: 30px; right: -10px; animation: floaty 4s ease-in-out infinite reverse; }
+  .fb-2 i { background: var(--secondary-blue); }
+  .fb-3 { top: 45%; right: -30px; animation: floaty 5s ease-in-out infinite; }
+  .fb-3 i { background: var(--whatsapp); }
+
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Slider controls */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--primary-blue);
+    box-shadow: var(--shadow-md);
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    transition: background .2s, color .2s;
+    z-index: 5;
+  }
+  .slider-btn:hover { background: var(--primary-blue); color: var(--white); }
+  .prev-btn { left: 20px; }
+  .next-btn { right: 20px; }
+  .dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(31,78,122,0.3);
+    cursor: pointer;
+    transition: all .3s;
+  }
+  .dot.active { background: var(--primary-blue); width: 28px; border-radius: 5px; }
+
+  /* ========== TRUST STRIP ========== */
+  .trust-strip {
+    background: var(--white);
+    padding: 30px 0;
+    border-bottom: 1px solid #eef2f6;
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .trust-item i {
+    font-size: 26px;
+    color: var(--accent-green);
+  }
+  .trust-item div { text-align: left; }
+  .trust-item strong { display: block; color: var(--primary-blue); font-size: 15px; }
+  .trust-item span { font-size: 12px; color: var(--muted-text); }
+
+  /* ========== SECTIONS ========== */
+  section { padding: 70px 0; }
+  .section-head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 50px;
+  }
+  .section-head .eyebrow {
+    display: inline-block;
+    color: var(--accent-green);
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-size: clamp(26px, 3.4vw, 36px);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .section-head p {
+    color: var(--muted-text);
+    font-size: 16px;
+  }
+
+  /* ========== ABOUT ========== */
+  .about { background: var(--off-white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .about-visual {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: var(--radius);
+    padding: 40px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .about-visual::after {
+    content: '';
+    position: absolute;
+    right: -80px;
+    bottom: -80px;
+    width: 260px;
+    height: 260px;
+    background: rgba(63,178,85,0.25);
+    border-radius: 50%;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    left: -60px;
+    top: -60px;
+    width: 200px;
+    height: 200px;
+    background: rgba(168,212,104,0.15);
+    border-radius: 50%;
+  }
+  .about-visual .quote {
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+  }
+  .about-visual .quote::before {
+    content: '"';
+    font-size: 80px;
+    line-height: 1;
+    color: var(--light-green);
+    font-family: Georgia;
+    display: block;
+    margin-bottom: -30px;
+  }
+  .about-visual .sign {
+    position: relative;
+    z-index: 2;
+    font-weight: 600;
+  }
+  .about-content h2 { font-size: 32px; margin-bottom: 18px; }
+  .about-content > p { color: var(--muted-text); margin-bottom: 24px; }
+  .about-list { list-style: none; }
+  .about-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .about-list li i {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--pale-green);
+    color: var(--accent-green);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+  .about-list strong { color: var(--primary-blue); display: block; margin-bottom: 2px; }
+  .about-list span { color: var(--muted-text); font-size: 14px; }
+
+  /* ========== SERVICES ========== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--white);
+    padding: 30px 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #eef2f6;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+    transition: width .4s;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+  .service-card:hover::before { width: 100%; }
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--light-blue), var(--pale-green));
+    display: grid;
+    place-items: center;
+    color: var(--primary-blue);
+    font-size: 26px;
+    margin-bottom: 18px;
+  }
+  .service-card h3 { font-size: 17px; margin-bottom: 10px; }
+  .service-card p { color: var(--muted-text); font-size: 14px; }
+
+  /* ========== HOW TO ORDER ========== */
+  .order-steps { background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    position: relative;
+  }
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--accent-green) 0 8px, transparent 8px 16px);
+    z-index: 0;
+  }
+  .step {
+    background: var(--white);
+    padding: 30px 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 auto 20px;
+    box-shadow: 0 6px 16px rgba(31,78,122,0.3);
+  }
+  .step:nth-child(2) .step-num { background: var(--accent-green); box-shadow: 0 6px 16px rgba(63,178,85,0.35); }
+  .step:nth-child(3) .step-num { background: var(--secondary-blue); }
+  .step h3 { font-size: 18px; margin-bottom: 10px; }
+  .step p { color: var(--muted-text); font-size: 14px; }
+
+  /* ========== CATEGORIES ========== */
+  .categories { background: var(--off-white); }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+  .cat-card {
+    background: var(--white);
+    padding: 24px 12px;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: transform .3s;
+    cursor: pointer;
+    border: 1px solid #eef2f6;
+  }
+  .cat-card:hover { transform: translateY(-4px); border-color: var(--accent-green); }
+  .cat-card i {
+    font-size: 32px;
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+  }
+  .cat-card:hover i { color: var(--accent-green); }
+  .cat-card span {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark-text);
+  }
+
+  /* ========== PRESCRIPTION UPLOAD ========== */
+  .rx-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #143852 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .rx-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(63,178,85,0.2), transparent 70%);
+    border-radius: 50%;
+  }
+  .rx-section::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(168,212,104,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+  .rx-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .rx-info .eyebrow {
+    display: inline-block;
+    background: rgba(63,178,85,0.2);
+    color: var(--light-green);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .rx-info h2 {
+    color: var(--white);
+    font-size: 34px;
+    margin-bottom: 16px;
+  }
+  .rx-info p {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 24px;
+    font-size: 16px;
+  }
+  .rx-features {
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  .rx-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .rx-features i {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+  }
+
+  .rx-form {
+    background: var(--white);
+    padding: 34px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    color: var(--dark-text);
+  }
+  .rx-form h3 {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  .rx-form > p {
+    color: var(--muted-text);
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  .form-group {
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #e0e6ee;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--dark-text);
+    transition: border-color .2s;
+    background: var(--off-white);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    background: var(--white);
+  }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .file-upload {
+    border: 2px dashed #d0d9e4;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    background: var(--off-white);
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    position: relative;
+  }
+  .file-upload:hover { border-color: var(--accent-green); background: var(--pale-green); }
+  .file-upload i {
+    font-size: 26px;
+    color: var(--primary-blue);
+    margin-bottom: 6px;
+  }
+  .file-upload p { font-size: 13px; color: var(--muted-text); margin: 0; }
+  .file-upload strong { color: var(--primary-blue); }
+  .file-upload input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  #fileName {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--accent-green);
+    font-weight: 600;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--whatsapp);
+    color: var(--white);
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform .2s, box-shadow .2s;
+    margin-top: 6px;
+    box-shadow: 0 6px 16px rgba(37,211,102,0.35);
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(37,211,102,0.5); }
+  .form-note {
+    background: var(--light-blue);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--primary-blue);
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .form-note i { color: var(--secondary-blue); margin-top: 2px; }
+
+  /* ========== WHY US ========== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .why-card {
+    padding: 30px;
+    border-radius: var(--radius);
+    background: var(--white);
+    border: 1px solid #eef2f6;
+    text-align: center;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .why-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pale-green), var(--light-blue));
+    display: grid;
+    place-items: center;
+    margin: 0 auto 18px;
+    font-size: 28px;
+    color: var(--primary-blue);
+  }
+  .why-card h3 { font-size: 18px; margin-bottom: 10px; }
+  .why-card p { color: var(--muted-text); font-size: 14px; }
+
+  /* ========== CONTACT ========== */
+  .contact { background: var(--off-white); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact-info h2 { font-size: 32px; margin-bottom: 12px; }
+  .contact-info > p { color: var(--muted-text); margin-bottom: 30px; }
+  .contact-item {
+    display: flex;
+    gap: 18px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .3s;
+  }
+  .contact-item:hover { transform: translateX(4px); }
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .contact-item:nth-child(2) .contact-icon { background: linear-gradient(135deg, var(--accent-green), var(--light-green)); }
+  .contact-item:nth-child(3) .contact-icon { background: linear-gradient(135deg, var(--whatsapp), #128C7E); }
+  .contact-item h4 { color: var(--primary-blue); font-size: 15px; margin-bottom: 4px; }
+  .contact-item p, .contact-item a { color: var(--muted-text); font-size: 14px; line-height: 1.5; }
+  .contact-item a:hover { color: var(--primary-blue); }
+
+  .map-wrap {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    height: 100%;
+    min-height: 400px;
+  }
+  .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #0F2A42;
+    color: rgba(255,255,255,0.7);
+    padding: 60px 0 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .footer-brand img { height: 54px; background: white; padding: 6px 10px; border-radius: 10px; }
+  .footer-brand h3 { color: var(--white); font-size: 18px; }
+  .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+  .footer-col h4 {
+    color: var(--white);
+    font-size: 16px;
+    margin-bottom: 18px;
+    position: relative;
+    padding-bottom: 8px;
+  }
+  .footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--accent-green);
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul a {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    transition: color .2s, padding-left .2s;
+    display: inline-block;
+  }
+  .footer-col ul a:hover { color: var(--light-green); padding-left: 4px; }
+  .footer-col ul a i { color: var(--light-green); margin-right: 6px; font-size: 11px; }
+
+  .social-row { display: flex; gap: 10px; margin-top: 10px; }
+  .social-row a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    transition: background .2s, transform .2s;
+  }
+  .social-row a:hover { background: var(--accent-green); transform: translateY(-3px); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 13px;
+  }
+  .footer-bottom span { color: var(--light-green); font-weight: 600; }
+
+  /* ========== FLOATING WHATSAPP ========== */
+  .float-wa {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--whatsapp);
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+    z-index: 998;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 8px 24px rgba(37,211,102,0.5), 0 0 0 15px rgba(37,211,102,0); }
+  }
+  .float-wa:hover { transform: scale(1.1); }
+
+  /* ========== SUCCESS MODAL ========== */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,42,66,0.7);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal.active { display: flex; }
+  .modal-box {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--radius);
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .modal-box .success-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--pale-green);
+    color: var(--accent-green);
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    margin: 0 auto 18px;
+  }
+  .modal-box h3 { font-size: 22px; margin-bottom: 10px; }
+  .modal-box p { color: var(--muted-text); font-size: 14px; margin-bottom: 20px; }
+  .modal-box .note {
+    background: var(--pale-green);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .modal-box .note i { color: var(--accent-green); margin-right: 6px; }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 20px;
+    color: var(--muted-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ========== RESPONSIVE — TABLET ========== */
+  @media (max-width: 992px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-grid { grid-template-columns: repeat(4, 1fr); }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .slide-inner, .about-grid, .rx-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+    .slide-visual { height: 300px; }
+    .visual-circle { width: 260px; height: 260px; }
+    .visual-circle .big-icon { font-size: 90px; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .steps-grid::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  }
+
+  /* ========== RESPONSIVE — MOBILE ========== */
+  @media (max-width: 720px) {
+    .container { padding: 0 16px; }
+    section { padding: 44px 0; }
+
+    /* --- TOP BAR: minimal, only essentials --- */
+    .top-bar { padding: 7px 0; font-size: 12px; }
+    .top-bar-inner { justify-content: center; gap: 0; }
+    .top-info { justify-content: center; gap: 14px; width: auto; }
+    .top-info span:nth-child(1),
+    .top-info span:nth-child(2) { display: none; }
+    .top-info span i { margin-right: 4px; }
+    .top-social { display: none; }
+
+    /* --- HEADER: cleaner brand + tidy actions --- */
+    header { box-shadow: 0 1px 8px rgba(31,78,122,0.08); }
+    .header-inner { padding: 10px 0; gap: 8px; }
+    .brand { gap: 10px; flex: 1; min-width: 0; }
+    .brand-logo { height: 44px; }
+    .brand-text h1 {
+      font-size: 15px;
+      line-height: 1.2;
+      margin-bottom: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-text p { font-size: 9px; letter-spacing: 1px; }
+
+    /* Shrink CTA into a compact WhatsApp icon button */
+    .header-cta {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 3px 10px rgba(37,211,102,0.35);
+    }
+    .header-cta .cta-text { display: none; }
+    .header-cta i { margin: 0; }
+
+    .menu-toggle {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--light-blue);
+      color: var(--primary-blue);
+      font-size: 18px;
+      transition: background .2s;
+    }
+    .menu-toggle:hover { background: var(--primary-blue); color: var(--white); }
+
+    /* Mobile nav dropdown — cleaner rows */
+    nav ul { display: none; }
+    nav ul.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      flex-direction: column;
+      padding: 8px 0;
+      gap: 0;
+      box-shadow: 0 8px 20px rgba(31,78,122,0.12);
+      border-top: 1px solid #eef2f6;
+      animation: slideDown .25s ease-out;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    nav ul.open li {
+      border-bottom: 1px solid #f1f4f8;
+    }
+    nav ul.open li:last-child { border-bottom: none; }
+    nav ul.open a {
+      display: block;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark-text);
+    }
+    nav ul.open a::after { display: none; }
+    nav ul.open a:hover { background: var(--off-white); color: var(--primary-blue); padding-left: 26px; }
+
+    /* --- HERO SLIDER: tighter, more focused --- */
+    .slide { padding: 32px 0 56px; }
+    .slide-inner { gap: 24px; text-align: center; }
+    .slide-content { display: flex; flex-direction: column; align-items: center; }
+    .slide-content .eyebrow {
+      font-size: 10px;
+      padding: 5px 12px;
+      margin-bottom: 12px;
+    }
+    .slide-content h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .slide-content p {
+      font-size: 14px;
+      margin-bottom: 22px;
+      max-width: 100%;
+    }
+    .slide-actions {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+    }
+    .slide-actions .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 13px 20px;
+      font-size: 14px;
+    }
+
+    .slide-visual { height: 240px; }
+    .visual-circle { width: 200px; height: 200px; }
+    .visual-circle .big-icon { font-size: 72px; }
+    .float-badge {
+      padding: 8px 12px;
+      font-size: 11px;
+      gap: 8px;
+    }
+    .float-badge i { width: 26px; height: 26px; font-size: 11px; }
+    .fb-1 { top: 10px; left: -8px; }
+    .fb-2 { bottom: 15px; right: -8px; }
+    .fb-3 { display: none; }
+
+    .slider-btn { display: none; }
+    .dots { bottom: 18px; }
+    .dot { width: 8px; height: 8px; }
+    .dot.active { width: 22px; }
+
+    /* --- TRUST STRIP: clean 2x2 grid, centered --- */
+    .trust-strip { padding: 22px 0; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .trust-item {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+      padding: 12px 6px;
+      background: var(--off-white);
+      border-radius: 12px;
+    }
+    .trust-item i { font-size: 22px; }
+    .trust-item div { text-align: center; }
+    .trust-item strong { font-size: 13px; }
+    .trust-item span { font-size: 11px; }
+
+    /* --- SECTION HEAD --- */
+    .section-head { margin-bottom: 32px; }
+    .section-head .eyebrow { font-size: 10px; margin-bottom: 8px; }
+    .section-head h2 { font-size: 24px; margin-bottom: 8px; }
+    .section-head p { font-size: 14px; }
+
+    /* --- ABOUT --- */
+    .about-visual {
+      padding: 30px 24px;
+      min-height: auto;
+    }
+    .about-visual .quote { font-size: 17px; }
+    .about-visual .quote::before { font-size: 60px; margin-bottom: -20px; }
+    .about-content h2 { font-size: 24px; }
+    .about-content > p { font-size: 14px; }
+    .about-list li { gap: 12px; margin-bottom: 14px; }
+    .about-list li i { width: 30px; height: 30px; font-size: 12px; }
+    .about-list strong { font-size: 14px; }
+    .about-list span { font-size: 13px; }
+
+    /* --- SERVICES --- */
+    .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .service-card { padding: 20px 14px; border-radius: 12px; }
+    .service-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    .service-card h3 { font-size: 14px; margin-bottom: 6px; line-height: 1.3; }
+    .service-card p { font-size: 12px; line-height: 1.5; }
+
+    /* --- HOW TO ORDER: vertical timeline with left connector --- */
+    .steps-grid { gap: 14px; position: relative; }
+    .steps-grid::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 42px;
+      top: 40px;
+      bottom: 40px;
+      width: 2px;
+      background: repeating-linear-gradient(180deg, var(--accent-green) 0 6px, transparent 6px 12px);
+      z-index: 0;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      text-align: left;
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+    .step-num {
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+      margin: 0;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(31,78,122,0.25);
+    }
+    .step h3 { font-size: 15px; margin-bottom: 4px; }
+    .step p { font-size: 13px; }
+
+    /* --- CATEGORIES: 3 columns, tighter, more polished --- */
+    .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .cat-card {
+      padding: 16px 6px;
+      border-radius: 12px;
+    }
+    .cat-card i { font-size: 22px; margin-bottom: 6px; }
+    .cat-card span { font-size: 11px; line-height: 1.2; }
+
+    /* --- PRESCRIPTION FORM --- */
+    .rx-section { padding: 44px 0; }
+    .rx-info { text-align: center; }
+    .rx-info .eyebrow { font-size: 10px; }
+    .rx-info h2 { font-size: 24px; margin-bottom: 10px; }
+    .rx-info p { font-size: 14px; margin-bottom: 20px; }
+    .rx-features { text-align: left; max-width: 300px; margin: 0 auto 24px; }
+    .rx-features li { font-size: 13px; }
+    .rx-info > div:last-child {
+      justify-content: center;
+      gap: 8px !important;
+    }
+    .rx-info > div:last-child .btn {
+      padding: 10px 16px;
+      font-size: 13px;
+      flex: 1;
+      min-width: 0;
+      justify-content: center;
+    }
+
+    .rx-form { padding: 22px 18px; border-radius: 14px; }
+    .rx-form h3 { font-size: 18px; }
+    .rx-form > p { font-size: 13px; margin-bottom: 18px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { font-size: 12px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select { padding: 11px 12px; font-size: 14px; border-radius: 9px; }
+    .file-upload { padding: 16px 12px; }
+    .file-upload i { font-size: 22px; }
+    .file-upload p { font-size: 12px; }
+    .submit-btn { padding: 13px; font-size: 14px; }
+    .form-note { font-size: 11px; padding: 10px; }
+
+    /* --- WHY US --- */
+    .why-grid { gap: 12px; }
+    .why-card { padding: 24px 20px; }
+    .why-icon { width: 56px; height: 56px; font-size: 22px; margin-bottom: 14px; }
+    .why-card h3 { font-size: 16px; }
+    .why-card p { font-size: 13px; }
+
+    /* --- CONTACT --- */
+    .contact-info h2 { font-size: 24px; }
+    .contact-info > p { font-size: 14px; margin-bottom: 20px; }
+    .contact-item { padding: 16px; gap: 14px; }
+    .contact-icon { width: 42px; height: 42px; font-size: 16px; border-radius: 10px; }
+    .contact-item h4 { font-size: 14px; }
+    .contact-item p, .contact-item a { font-size: 13px; }
+    .map-wrap { min-height: 280px; }
+
+    /* --- FOOTER: clean left-aligned stack --- */
+    footer { padding: 40px 0 0; }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      text-align: left;
+      gap: 28px;
+      padding-bottom: 30px;
+    }
+    .footer-brand { justify-content: flex-start; margin-bottom: 12px; }
+    .footer-brand img { height: 44px; }
+    .footer-brand h3 { font-size: 16px; }
+    .footer-col p { font-size: 13px; margin-bottom: 14px; }
+    .footer-col h4 { font-size: 14px; margin-bottom: 14px; }
+    .footer-col h4::after { left: 0; transform: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul a { font-size: 13px; }
+    .social-row { justify-content: flex-start; }
+    .social-row a { width: 34px; height: 34px; font-size: 14px; }
+    .footer-bottom { padding: 16px 0; font-size: 12px; }
+
+    /* --- FLOAT WHATSAPP: smaller + safer position --- */
+    .float-wa {
+      width: 52px;
+      height: 52px;
+      font-size: 24px;
+      bottom: 18px;
+      right: 18px;
+    }
+
+    /* --- MODAL --- */
+    .modal-box { padding: 30px 22px; }
+    .modal-box .success-icon { width: 60px; height: 60px; font-size: 26px; margin-bottom: 14px; }
+    .modal-box h3 { font-size: 19px; }
+    .modal-box p { font-size: 13px; }
+    .modal-box .note { font-size: 12px; padding: 10px; }
+  }
+
+  /* Extra tight for very small phones */
+  @media (max-width: 380px) {
+    .brand-text h1 { font-size: 13px; }
+    .brand-text p { font-size: 8px; }
+    .brand-logo { height: 38px; }
+    .slide-content h2 { font-size: 22px; }
+    .section-head h2 { font-size: 21px; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="top-bar">
+  <div class="container top-bar-inner">
+    <div class="top-info">
+      <span><i class="fas fa-clock"></i> Mon - Sun: 8:00 AM - 10:00 PM</span>
+      <span><i class="fas fa-map-marker-alt"></i> Phulwarisharif, Patna</span>
+      <span><i class="fas fa-phone"></i> +91 77810 08157</span>
+    </div>
+    <div class="top-social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/917781008157" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="brand">
+      <img src="logo.svg" alt="Anshu Medicine Center Logo" class="brand-logo" />
+      <div class="brand-text">
+        <h1>Anshu Medicine Center</h1>
+        <p>YOUR HEALTH, OUR CARE</p>
+      </div>
+    </a>
+    <nav>
+      <ul id="navList">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#order">How to Order</a></li>
+        <li><a href="#prescription">Prescription</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/917781008157?text=Hello%20Anshu%20Medicine%20Center%2C%20I%20want%20to%20place%20an%20order." class="header-cta" target="_blank">
+      <i class="fab fa-whatsapp"></i><span class="cta-text">Order Now</span>
+    </a>
+    <button class="menu-toggle" onclick="document.getElementById('navList').classList.toggle('open')">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO SLIDER ============ -->
+<section class="hero-slider" id="home">
+  <div class="slides" id="slides">
+
+    <!-- SLIDE 1 -->
+    <div class="slide">
+      <div class="container slide-inner">
+        <div class="slide-content">
+          <span class="eyebrow">Trusted Neighbourhood Pharmacy</span>
+          <h2>Your Family's <span>Health Partner</span> in Phulwarisharif</h2>
+          <p>Genuine medicines, honest prices, and a friendly face you already know. Walk in or order on WhatsApp — we make sure your prescription reaches your door.</p>
+          <div class="slide-actions">
+            <a href="https://wa.me/917781008157?text=Hello%2C%20I%20want%20to%20order%20medicines." class="btn btn-whatsapp" target="_blank">
+              <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
+            <a href="#services" class="btn btn-outline"><i class="fas fa-arrow-right"></i> Our Services</a>
+          </div>
+        </div>
+        <div class="slide-visual">
+          <div class="visual-circle">
+            <i class="fas fa-clinic-medical big-icon"></i>
+            <div class="float-badge fb-1"><i class="fas fa-check"></i> 100% Genuine</div>
+            <div class="float-badge fb-2"><i class="fas fa-truck"></i> Home Delivery</div>
+            <div class="float-badge fb-3"><i class="fab fa-whatsapp"></i> Order Fast</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <div class="container slide-inner">
+        <div class="slide-content">
+          <span class="eyebrow">Upload &amp; Relax</span>
+          <h2>Send Us Your <span>Prescription</span> on WhatsApp</h2>
+          <p>Snap a photo of your doctor's prescription and send it to us. We'll confirm availability, share the price, and deliver — all through a simple chat.</p>
+          <div class="slide-actions">
+            <a href="#prescription" class="btn btn-primary"><i class="fas fa-file-medical"></i> Upload Prescription</a>
+            <a href="https://wa.me/917781008157?text=Hello%2C%20I%20want%20to%20share%20my%20prescription." class="btn btn-whatsapp" target="_blank">
+              <i class="fab fa-whatsapp"></i> Send on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="slide-visual">
+          <div class="visual-circle">
+            <i class="fas fa-file-prescription big-icon"></i>
+            <div class="float-badge fb-1"><i class="fas fa-camera"></i> Snap &amp; Send</div>
+            <div class="float-badge fb-2"><i class="fas fa-check-double"></i> Quick Confirm</div>
+            <div class="float-badge fb-3"><i class="fas fa-shield-alt"></i> Safe &amp; Private</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <div class="container slide-inner">
+        <div class="slide-content">
+          <span class="eyebrow">Fast &amp; Reliable</span>
+          <h2>Home Delivery Across <span>Phulwarisharif</span></h2>
+          <p>Whether it's a sudden fever at midnight or a monthly refill for a loved one, our delivery reaches you fast — with the care you'd expect from a family chemist.</p>
+          <div class="slide-actions">
+            <a href="tel:+917781008157" class="btn btn-primary"><i class="fas fa-phone"></i> Call to Order</a>
+            <a href="#contact" class="btn btn-outline"><i class="fas fa-map-marker-alt"></i> Visit Store</a>
+          </div>
+        </div>
+        <div class="slide-visual">
+          <div class="visual-circle">
+            <i class="fas fa-truck-medical big-icon"></i>
+            <div class="float-badge fb-1"><i class="fas fa-bolt"></i> Fast Delivery</div>
+            <div class="float-badge fb-2"><i class="fas fa-heart"></i> Handled with Care</div>
+            <div class="float-badge fb-3"><i class="fas fa-map-pin"></i> Local Team</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="slider-btn prev-btn" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="slider-btn next-btn" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  <div class="dots">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust-strip">
+  <div class="container trust-grid">
+    <div class="trust-item">
+      <i class="fas fa-pills"></i>
+      <div><strong>100% Genuine</strong><span>Verified sources only</span></div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-truck-fast"></i>
+      <div><strong>Fast Delivery</strong><span>Within Phulwarisharif</span></div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-user-doctor"></i>
+      <div><strong>Expert Advice</strong><span>Ask our pharmacist</span></div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-tag"></i>
+      <div><strong>Fair Prices</strong><span>Discounts on refills</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <div class="quote">A local chemist who knows your family, your history, and what you need — before you have to explain.</div>
+      <div class="sign">— The AMC Promise</div>
+    </div>
+    <div class="about-content">
+      <span class="eyebrow" style="color: var(--accent-green); font-weight: 600; letter-spacing: 2px; font-size: 12px; text-transform: uppercase;">About Us</span>
+      <h2>Serving Phulwarisharif with Trust &amp; Care</h2>
+      <p>Anshu Medicine Center is a neighbourhood pharmacy in Askuri Complex, Utri Sangat — run by people who live where you live. We stock a wide range of prescription medicines, over-the-counter remedies, wellness products, and daily-need healthcare items.</p>
+      <ul class="about-list">
+        <li>
+          <i class="fas fa-check"></i>
+          <div>
+            <strong>Genuine, Bill-Backed Medicines</strong>
+            <span>Every product sourced from licensed distributors, with a proper bill for every purchase.</span>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-check"></i>
+          <div>
+            <strong>WhatsApp Ordering</strong>
+            <span>No app to install. Just message us your prescription — we handle the rest.</span>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-check"></i>
+          <div>
+            <strong>Personal Attention</strong>
+            <span>We remember your regular medicines and remind you before you run out.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What We Do</span>
+      <h2>Everything Your Family Needs, Under One Roof</h2>
+      <p>From critical prescriptions to everyday wellness, we've got Phulwarisharif covered.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-prescription-bottle-medical"></i></div>
+        <h3>Prescription Medicines</h3>
+        <p>All major brands and generic alternatives. If we don't have it in stock, we'll source it fast.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-heart-pulse"></i></div>
+        <h3>OTC &amp; Wellness</h3>
+        <p>Common cold, fever, first aid, vitamins, supplements — the daily essentials for every home.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-baby"></i></div>
+        <h3>Baby &amp; Mother Care</h3>
+        <p>Formula, diapers, infant medicines and mother-care products — everything under one shelf.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-tooth"></i></div>
+        <h3>Personal Care</h3>
+        <p>Skin, hair, oral and hygiene products from trusted brands at honest neighbourhood prices.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
+        <h3>Health Devices</h3>
+        <p>BP monitors, glucometers, thermometers, nebulizers, oxygen support — with usage guidance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-syringe"></i></div>
+        <h3>Diabetic Care</h3>
+        <p>Insulin, strips, sugar-free products and monthly refill reminders for regular customers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Ayurvedic &amp; Herbal</h3>
+        <p>Trusted Ayurvedic brands, immunity boosters and traditional remedies alongside modern medicine.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-truck-fast"></i></div>
+        <h3>Home Delivery</h3>
+        <p>Quick delivery within Phulwarisharif. Call or WhatsApp — we'll be at your door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO ORDER ============ -->
+<section class="order-steps" id="order">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Simple &amp; Fast</span>
+      <h2>How to Order in 3 Easy Steps</h2>
+      <p>Ordering your medicines has never been easier. Just follow these steps.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Send Prescription</h3>
+        <p>Click a photo of your prescription and send it to us on WhatsApp, or use the form below.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Get Confirmation</h3>
+        <p>We check availability, share the total price with you, and confirm your delivery time.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Receive at Home</h3>
+        <p>Your medicines reach your doorstep. Pay by cash, UPI, or online — whichever is easier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="categories">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Browse Categories</span>
+      <h2>Shop by Category</h2>
+      <p>Tap any category and message us to check availability instantly.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="orderCategory('Fever & Cold Medicines')">
+        <i class="fas fa-thermometer-half"></i>
+        <span>Fever &amp; Cold</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Diabetes Care Products')">
+        <i class="fas fa-droplet"></i>
+        <span>Diabetes Care</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('BP & Heart Medicines')">
+        <i class="fas fa-heart-pulse"></i>
+        <span>BP &amp; Heart</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Pain Relief Products')">
+        <i class="fas fa-band-aid"></i>
+        <span>Pain Relief</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Vitamins & Supplements')">
+        <i class="fas fa-capsules"></i>
+        <span>Vitamins</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Baby Care Products')">
+        <i class="fas fa-baby"></i>
+        <span>Baby Care</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Skin Care Products')">
+        <i class="fas fa-hand-sparkles"></i>
+        <span>Skin Care</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Ayurvedic Products')">
+        <i class="fas fa-leaf"></i>
+        <span>Ayurvedic</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('First Aid Kit Items')">
+        <i class="fas fa-briefcase-medical"></i>
+        <span>First Aid</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Health Devices')">
+        <i class="fas fa-stethoscope"></i>
+        <span>Devices</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Personal Hygiene')">
+        <i class="fas fa-soap"></i>
+        <span>Hygiene</span>
+      </div>
+      <div class="cat-card" onclick="orderCategory('Mother Care Products')">
+        <i class="fas fa-person-breastfeeding"></i>
+        <span>Mother Care</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRESCRIPTION UPLOAD FORM ============ -->
+<section class="rx-section" id="prescription">
+  <div class="container rx-grid">
+    <div class="rx-info">
+      <span class="eyebrow">Prescription Order</span>
+      <h2>Send Your Prescription — We Deliver</h2>
+      <p>Fill this quick form and we'll open WhatsApp with your order details ready to send. Just attach your prescription photo in the chat and hit send.</p>
+      <ul class="rx-features">
+        <li><i class="fas fa-check"></i> Confirmation within 15 minutes</li>
+        <li><i class="fas fa-check"></i> Free delivery in Phulwarisharif</li>
+        <li><i class="fas fa-check"></i> Cash, UPI, or online payment</li>
+        <li><i class="fas fa-check"></i> Your details stay private</li>
+      </ul>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="tel:+917781008157" class="btn btn-outline" style="border-color: white; color: white;">
+          <i class="fas fa-phone"></i> +91 77810 08157
+        </a>
+        <a href="tel:+917783034951" class="btn btn-outline" style="border-color: white; color: white;">
+          <i class="fas fa-phone"></i> +91 77830 34951
+        </a>
+      </div>
+    </div>
+
+    <div class="rx-form">
+      <h3>Quick Order Form</h3>
+      <p>Fill this and continue on WhatsApp</p>
+
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" required placeholder="Your name">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" required placeholder="10-digit mobile" pattern="[0-9]{10}">
+          </div>
+          <div class="form-group">
+            <label for="urgency">Order Type</label>
+            <select id="urgency">
+              <option value="Normal">Normal Order</option>
+              <option value="Urgent">Urgent</option>
+              <option value="Monthly Refill">Monthly Refill</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address *</label>
+          <textarea id="address" required placeholder="House no., street, landmark, Phulwarisharif"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="medicines">Medicines Needed (optional)</label>
+          <textarea id="medicines" placeholder="List medicines or write 'As per prescription'"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Attach Prescription (optional)</label>
+          <label class="file-upload">
+            <i class="fas fa-file-image"></i>
+            <p><strong>Click to select</strong> your prescription image</p>
+            <p style="font-size: 11px; margin-top: 4px;">JPG, PNG or PDF</p>
+            <input type="file" id="prescription" accept="image/*,.pdf" onchange="showFileName(this)">
+            <span id="fileName"></span>
+          </label>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fab fa-whatsapp"></i> Continue on WhatsApp
+        </button>
+
+        <div class="form-note">
+          <i class="fas fa-info-circle"></i>
+          <div>Your order details will open on WhatsApp. Attach your prescription photo there and send — we'll confirm within minutes.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2>The Neighbourhood Advantage</h2>
+      <p>What makes us different from big pharmacy chains and online apps.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-people-arrows"></i></div>
+        <h3>We Know You</h3>
+        <p>Regular customers get their history remembered — no need to repeat the same medicine names every visit.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-hand-holding-medical"></i></div>
+        <h3>Real Support</h3>
+        <p>Talk to a real pharmacist for dosage doubts, substitute options, or side-effect questions — not a chatbot.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-shield-heart"></i></div>
+        <h3>Emergency Ready</h3>
+        <p>Late-night fever or urgent refill? We do our best to help even when other shops are shut.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Get in Touch</span>
+      <h2>Visit or Call Us</h2>
+      <p>Come by the shop or reach out — we're here to help.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Our Location</h4>
+            <p>Askuri Complex, Utri Sangat,<br>Phulwarisharif, Patna, Bihar</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <h4>Call Us</h4>
+            <p>
+              <a href="tel:+917781008157">+91 77810 08157</a><br>
+              <a href="tel:+917783034951">+91 77830 34951</a>
+            </p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <h4>WhatsApp Order</h4>
+            <p><a href="https://wa.me/917781008157" target="_blank">Chat with us anytime — we respond fast.</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background: linear-gradient(135deg, #f4a261, #e76f51);"><i class="fas fa-clock"></i></div>
+          <div>
+            <h4>Store Hours</h4>
+            <p>Monday to Sunday<br>8:00 AM — 10:00 PM</p>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Phulwari+Sharif,+Patna,+Bihar&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Anshu Medicine Center Location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Anshu Medicine Center Logo">
+        <h3>Anshu Medicine Center</h3>
+      </div>
+      <p>Your trusted neighbourhood pharmacy in Phulwarisharif, Patna — genuine medicines, honest prices, home delivery.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/917781008157" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home"><i class="fas fa-chevron-right"></i>Home</a></li>
+        <li><a href="#about"><i class="fas fa-chevron-right"></i>About Us</a></li>
+        <li><a href="#services"><i class="fas fa-chevron-right"></i>Services</a></li>
+        <li><a href="#order"><i class="fas fa-chevron-right"></i>How to Order</a></li>
+        <li><a href="#contact"><i class="fas fa-chevron-right"></i>Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services"><i class="fas fa-chevron-right"></i>Prescription Medicines</a></li>
+        <li><a href="#services"><i class="fas fa-chevron-right"></i>Home Delivery</a></li>
+        <li><a href="#prescription"><i class="fas fa-chevron-right"></i>Prescription Upload</a></li>
+        <li><a href="#services"><i class="fas fa-chevron-right"></i>Health Devices</a></li>
+        <li><a href="#services"><i class="fas fa-chevron-right"></i>Baby &amp; Mother Care</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-map-marker-alt"></i>Askuri Complex, Utri Sangat, Phulwarisharif, Patna</a></li>
+        <li><a href="tel:+917781008157"><i class="fas fa-phone"></i>+91 77810 08157</a></li>
+        <li><a href="tel:+917783034951"><i class="fas fa-phone"></i>+91 77830 34951</a></li>
+        <li><a href="https://wa.me/917781008157"><i class="fab fa-whatsapp"></i>WhatsApp Order</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      © 2026 <span>Anshu Medicine Center</span> — All rights reserved. | Phulwarisharif, Patna
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a href="https://wa.me/917781008157?text=Hello%20Anshu%20Medicine%20Center%2C%20I%20want%20to%20place%20an%20order." class="float-wa" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ============ SUCCESS MODAL ============ -->
+<div class="modal" id="successModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="success-icon"><i class="fas fa-check"></i></div>
+    <h3>WhatsApp is Opening!</h3>
+    <p>Your order details are ready to send on WhatsApp.</p>
+    <div class="note">
+      <i class="fas fa-camera"></i>
+      <strong>Don't forget:</strong> Attach your prescription image in the WhatsApp chat, then hit send. We'll confirm within 15 minutes.
+    </div>
+    <a href="#" id="modalWaBtn" class="btn btn-whatsapp" target="_blank" style="width: 100%; justify-content: center;">
+      <i class="fab fa-whatsapp"></i> Open WhatsApp Now
+    </a>
+  </div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // SLIDER
+  let currentSlide = 0;
+  const totalSlides = 3;
+  const slidesEl = document.getElementById('slides');
+  const dots = document.querySelectorAll('.dot');
+
+  function updateSlide() {
+    slidesEl.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+  function changeSlide(dir) {
+    currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+    updateSlide();
+  }
+  function goToSlide(idx) {
+    currentSlide = idx;
+    updateSlide();
+  }
+  // auto slide every 6 seconds
+  setInterval(() => changeSlide(1), 6000);
+
+  // FILE UPLOAD DISPLAY
+  function showFileName(input) {
+    const fileName = document.getElementById('fileName');
+    if (input.files && input.files[0]) {
+      fileName.innerHTML = '<i class="fas fa-check-circle"></i> ' + input.files[0].name;
+    } else {
+      fileName.textContent = '';
+    }
+  }
+
+  // CATEGORY QUICK ORDER
+  function orderCategory(category) {
+    const msg = `Hello Anshu Medicine Center,%0AI'm looking for products in *${category}*.%0APlease share what's available.`;
+    window.open(`https://wa.me/917781008157?text=${msg}`, '_blank');
+  }
+
+  // ORDER FORM → WHATSAPP
+  function submitOrder(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const urgency = document.getElementById('urgency').value;
+    const address = document.getElementById('address').value.trim();
+    const medicines = document.getElementById('medicines').value.trim();
+    const hasFile = document.getElementById('prescription').files.length > 0;
+    const fileName = hasFile ? document.getElementById('prescription').files[0].name : '';
+
+    let message = `*🏥 New Order — Anshu Medicine Center*%0A%0A`;
+    message += `*👤 Name:* ${name}%0A`;
+    message += `*📱 Phone:* ${phone}%0A`;
+    message += `*⚡ Order Type:* ${urgency}%0A`;
+    message += `*📍 Address:* ${address}%0A`;
+    if (medicines) message += `*💊 Medicines:* ${medicines}%0A`;
+    message += `%0A`;
+    if (hasFile) {
+      message += `*📎 Prescription:* Selected (${fileName})%0A_I'll attach it in this chat._%0A`;
+    } else {
+      message += `_No prescription attached — please advise._%0A`;
+    }
+    message += `%0A_Sent via anshumedicine.com order form_`;
+
+    const encodedMsg = message.replace(/ /g, '%20');
+    const waUrl = `https://wa.me/917781008157?text=${encodedMsg}`;
+
+    document.getElementById('modalWaBtn').href = waUrl;
+    document.getElementById('successModal').classList.add('active');
+
+    // Also open WhatsApp automatically after a short delay
+    setTimeout(() => { window.open(waUrl, '_blank'); }, 800);
+  }
+
+  function closeModal() {
+    document.getElementById('successModal').classList.remove('active');
+  }
+
+  // Close modal on outside click
+  document.getElementById('successModal').addEventListener('click', (e) => {
+    if (e.target.id === 'successModal') closeModal();
+  });
+
+  // Close mobile nav on link click
+  document.querySelectorAll('#navList a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navList').classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
