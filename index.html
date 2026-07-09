@@ -1035,28 +1035,40 @@
 
     /* --- HEADER: cleaner brand + tidy actions --- */
     header { box-shadow: 0 1px 8px rgba(31,78,122,0.08); }
-    .header-inner { padding: 10px 0; gap: 8px; }
-    .brand { gap: 10px; flex: 1; min-width: 0; }
-    .brand-logo { height: 44px; }
+    .header-inner { padding: 10px 0; gap: 6px; flex-wrap: nowrap; }
+    .brand { gap: 8px; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+    .brand-logo { height: 40px; flex-shrink: 0; }
+    .brand-text {
+      min-width: 0;
+      overflow: hidden;
+      flex: 1 1 auto;
+    }
     .brand-text h1 {
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.2;
       margin-bottom: 1px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .brand-text p { font-size: 9px; letter-spacing: 1px; }
+    .brand-text p {
+      font-size: 9px;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-    /* Shrink CTA into a compact WhatsApp icon button */
+    /* Action buttons — compact and non-shrinkable */
     .header-cta {
       padding: 0;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       justify-content: center;
-      font-size: 16px;
+      font-size: 15px;
       box-shadow: 0 3px 10px rgba(37,211,102,0.35);
+      flex-shrink: 0;
     }
     .header-cta .cta-text { display: none; }
     .header-cta i { margin: 0; }
@@ -1064,13 +1076,14 @@
     .menu-toggle {
       display: grid;
       place-items: center;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
       background: var(--light-blue);
       color: var(--primary-blue);
-      font-size: 18px;
+      font-size: 17px;
       transition: background .2s;
+      flex-shrink: 0;
     }
     .menu-toggle:hover { background: var(--primary-blue); color: var(--white); }
 
@@ -1337,9 +1350,13 @@
 
   /* Extra tight for very small phones */
   @media (max-width: 380px) {
-    .brand-text h1 { font-size: 13px; }
-    .brand-text p { font-size: 8px; }
-    .brand-logo { height: 38px; }
+    .container { padding: 0 12px; }
+    .header-inner { gap: 5px; }
+    .brand { gap: 6px; }
+    .brand-logo { height: 36px; }
+    .brand-text h1 { font-size: 12.5px; }
+    .brand-text p { font-size: 8px; letter-spacing: 0.5px; }
+    .header-cta, .menu-toggle { width: 34px; height: 34px; font-size: 14px; }
     .slide-content h2 { font-size: 22px; }
     .section-head h2 { font-size: 21px; }
     .cat-grid { grid-template-columns: repeat(2, 1fr); }
