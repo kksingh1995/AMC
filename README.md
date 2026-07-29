@@ -1,6 +1,6 @@
-# Anshu Medicine Center — Website
+# Anshu Medicine Centre — Website
 
-Live-ready static website for **Anshu Medicine Center**, Phulwarisharif, Patna. Mobile-friendly, WhatsApp ordering, prescription upload, ready to deploy on Render.
+Live-ready static website for **Anshu Medicine Centre**, Phulwarisharif, Patna. Mobile-friendly, WhatsApp ordering, prescription upload, and full compliance pages (Privacy, Refund, T&C) — ready for RCS / WhatsApp Business API approval and Render deployment.
 
 ---
 
@@ -8,98 +8,84 @@ Live-ready static website for **Anshu Medicine Center**, Phulwarisharif, Patna. 
 
 | File | Purpose |
 |---|---|
-| `index.html` | Complete website (open this in a browser) |
-| `logo.svg` | AMC logo — used everywhere on the site (guaranteed to show) |
-| `render.yaml` | Render deployment configuration (auto-detected) |
+| `index.html` | Main homepage (logo embedded inside — always displays) |
+| `privacy-policy.html` | Privacy Policy (required by WhatsApp Business API) |
+| `refund-policy.html` | Refund & Return Policy (required by WhatsApp Business API) |
+| `terms-and-conditions.html` | Terms & Conditions (required by WhatsApp Business API) |
+| `logo.png` | AMC logo with **transparent background** (for social sharing / OG image) |
+| `logo-square.png` | Square logo (for social sharing / OG image) |
+| `render.yaml` | Render deployment configuration |
 | `README.md` | This file |
 
-Nothing else needed. Zero build step. Zero dependencies. Just static HTML.
+Zero build step. Zero dependencies. Pure static HTML.
+
+> ✅ **Logo is embedded directly inside each HTML file** (base64), so it will *always* display — even if the JPEG files fail to upload or serve. This is bulletproof.
 
 ---
 
-## 🚀 Deploy on Render (2 methods)
+## 🏥 WhatsApp Business API / RCS Approval
 
-### Method 1 — GitHub deploy (recommended, auto-updates)
+Meta (WhatsApp) and RCS providers require **publicly accessible URLs** for these three legal pages when reviewing your business API application. After deployment, your policies will be at:
 
-1. Create a new GitHub repository (name it anything, e.g. `anshu-medicine`).
-2. Upload all 4 files (`index.html`, `logo.svg`, `render.yaml`, `README.md`) to the repo — you can drag-and-drop on github.com.
-3. Go to **[render.com](https://render.com)** → sign in with GitHub.
-4. Click **New +** → **Static Site**.
-5. Select your repository.
-6. Render auto-detects `render.yaml` and fills everything. Just click **Create Static Site**.
-7. Wait ~1 minute → your site is live at `https://anshu-medicine-center.onrender.com` (or a similar URL).
+- `https://YOUR-SITE.onrender.com/privacy-policy.html`
+- `https://YOUR-SITE.onrender.com/refund-policy.html`
+- `https://YOUR-SITE.onrender.com/terms-and-conditions.html`
 
-**Bonus:** Every time you push a change to GitHub, Render auto-deploys the new version.
+These URLs are exactly what you paste into the WhatsApp Business API / RCS application forms.
 
-### Method 2 — Direct upload (fastest, no GitHub)
-
-1. ZIP the entire folder (all 4 files).
-2. Go to **[render.com](https://render.com)** → **New +** → **Static Site**.
-3. Choose **"Deploy without a Git repository"** (if the option is available) OR create a private GitHub repo and upload the ZIP contents there.
-4. Set **Publish directory** to `./` (root).
-5. Deploy.
-
-### Custom domain (optional)
-
-Once deployed, in the Render dashboard:
-- Go to **Settings → Custom Domains → Add**.
-- Enter your domain (e.g. `anshumedicine.com`).
-- Update your DNS provider with the CNAME record Render gives you.
-- Done — HTTPS is free and automatic.
+> ⚠️ **Important:** The policies included are professionally drafted templates covering the standard requirements for an Indian pharmacy business (Drugs and Cosmetics Act, IT Act 2000, DPDP Act 2023, Consumer Protection Act 2019). **We recommend having a lawyer review them once** before official submission to WhatsApp/Meta — this is standard practice for any business.
 
 ---
 
-## 🖼️ Want to use your own logo image?
+## 🚀 Deploy on Render
 
-The site currently uses `logo.svg` — a clean AMC-branded vector logo. If you want to replace it with your original JPEG/PNG:
+### GitHub deploy (recommended)
 
-1. Save your logo file as `logo.svg` (or `logo.png`) in the same folder.
-2. If you use a different filename or extension, open `index.html` and search for `logo.svg` — replace **both occurrences** (header + footer) with your filename.
-3. Also update the `<link rel="icon" href="logo.svg">` line at the top.
+1. Create a GitHub repo (e.g. `anshu-medicine`).
+2. Upload **all files** to the repo (including the 3 new policy HTMLs).
+3. Sign in on [render.com](https://render.com) → **New + → Static Site**.
+4. Select your repository. Render auto-detects `render.yaml` → click **Create Static Site**.
+5. Live in ~1 minute at `https://YOUR-SITE.onrender.com`.
 
-**Tip:** For a professional look, keep the logo transparent-background and roughly 3:1 aspect ratio (wider than tall).
+Every commit auto-deploys.
 
----
+### Custom domain
 
-## 📱 How the WhatsApp order works
-
-When someone fills the prescription order form:
-
-1. Their details (name, phone, address, medicines, order type) get packed into a WhatsApp message.
-2. WhatsApp opens with the message pre-filled, addressed to **+91 77810 08157**.
-3. A popup reminds them to **attach the prescription photo** in the chat.
-4. Customer sends → you receive the complete order on WhatsApp.
-
-Category cards, floating WhatsApp button, and header "Order Now" button all open WhatsApp with context-aware messages too.
+Render dashboard → **Settings → Custom Domains → Add**. Free HTTPS.
 
 ---
 
-## ✏️ Where to update details
+## 📞 Contact details baked into the site
 
-Open `index.html` in any text editor and use **Ctrl+F** (Find & Replace):
+| Detail | Value |
+|---|---|
+| Primary WhatsApp | +91 70709 99457 |
+| Secondary phone | +91 77830 34951 |
+| Address | Askuri Complex, Utri Sangat, Phulwarisharif, Patna |
+| Coordinates | 25.57954868414266, 85.0747359 |
+| Store hours | Mon – Sun, 8:00 AM – 10:00 PM |
+
+To change any of these, open the relevant `.html` file and search-and-replace:
 
 | Change | Find |
 |---|---|
-| Primary WhatsApp / phone | `917781008157` |
-| Second phone | `917783034951` |
+| Primary WhatsApp / phone | `917070999457` and `70709 99457` |
+| Secondary phone | `917783034951` and `77830 34951` |
 | Address | `Askuri Complex` |
+| Map coordinates | `25.57954868414266` |
 | Business hours | `8:00 AM — 10:00 PM` |
-| Store name | `Anshu Medicine Center` |
-| Facebook link | `aria-label="Facebook"` (nearby `href="#"`) |
-| Instagram link | `aria-label="Instagram"` (nearby `href="#"`) |
 
-### Changing the map location
-
-1. Open Google Maps, search your exact shop location.
-2. **Share → Embed a map → Copy HTML.**
-3. In `index.html`, find `<iframe` (in the Contact section) and replace the `src` URL.
+The policy pages also contain these details — update all HTML files at once for consistency.
 
 ---
 
-## 🎨 Color palette
+## 🎨 Design & Branding
 
-Defined once at the top of the stylesheet in `index.html`. Change these variables and the whole site updates:
+**Brand typography:**
+- **Anshu** — bold, 26px, deep blue (primary emphasis)
+- **MEDICINE CENTRE** — small caps, 11px, green (tagline)
 
+**Color palette:**
 ```css
 --primary-blue:   #1F4E7A;   /* deep AMC blue */
 --secondary-blue: #2C6FA6;   /* lighter blue */
@@ -114,27 +100,43 @@ Defined once at the top of the stylesheet in `index.html`. Change these variable
 
 - ✅ Fully responsive (phone → tablet → desktop)
 - ✅ Auto-rotating hero slider with 3 slides
-- ✅ Sticky mobile-friendly header
+- ✅ Sticky mobile-friendly header with clean brand typography
 - ✅ Prescription order form → auto WhatsApp
 - ✅ 12 medicine categories with one-click WhatsApp inquiry
-- ✅ Floating WhatsApp button with pulse animation
-- ✅ Trust indicators, services grid, 3-step ordering guide
-- ✅ Google Maps location embed
-- ✅ Optimized mobile view with proper navigation
-- ✅ SEO meta tags
+- ✅ Floating WhatsApp button
+- ✅ Google Maps embed pinned to exact shop location
+- ✅ "Get Directions" button
+- ✅ Schema.org structured data for local SEO
+- ✅ Open Graph tags for social sharing
+- ✅ **Privacy Policy, Refund Policy, T&C — full pages for API approval**
 - ✅ Zero dependencies, zero build step
 - ✅ Free HTTPS on Render
 
 ---
 
-## 🆘 Troubleshooting
+## 🖼️ Replacing the logo
 
-**Logo not showing?** Make sure `logo.svg` is in the same folder as `index.html` and both are uploaded to your host.
+The site uses `logo.jpg` (wide) in header/footer and `logo-square.jpg` for favicon & social share. To replace:
 
-**Form doesn't open WhatsApp?** WhatsApp must be installed on the customer's device (or they need WhatsApp Web open). This is normal behavior.
-
-**Site looks broken on Render?** Check that your **Publish Directory** is set to `./` (just a dot and slash) — not `dist` or `build`.
+1. Save your new file with the **same filename** in the same folder.
+2. Done — no code changes needed.
 
 ---
 
-Made with care for Anshu Medicine Center • Askuri Complex, Utri Sangat, Phulwarisharif, Patna
+## 🆘 Troubleshooting
+
+**Policies not accessible?** Confirm all 3 HTML files are uploaded alongside `index.html`. Test in the browser: `yoursite.onrender.com/privacy-policy.html` etc.
+
+**WhatsApp API application rejected?** Common reasons:
+- Missing contact info on policy pages (all 3 have full contact block ✓)
+- Missing "last updated" date (all 3 have this ✓)
+- Policies not accessible via HTTPS (Render provides free HTTPS ✓)
+- Business name mismatch between WhatsApp account and website — make sure both say "Anshu Medicine Centre"
+
+**Logo not showing?** Confirm `logo.jpg` and `logo-square.jpg` are in the same folder as HTML files.
+
+**Cache issue after update?** Hard refresh: Ctrl+Shift+R (desktop) or clear browser cache (mobile).
+
+---
+
+Made with care for Anshu Medicine Centre • Askuri Complex, Utri Sangat, Phulwarisharif, Patna
