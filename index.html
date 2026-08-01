@@ -1861,11 +1861,11 @@
         </div>
 
         <div class="form-group">
-          <label>Attach Prescription (optional)</label>
+          <label>Attach Prescription <span style="color: var(--accent-green); font-weight: 700;">(recommended)</span></label>
           <label class="file-upload">
             <i class="fas fa-file-image"></i>
             <p><strong>Click to select</strong> your prescription image</p>
-            <p style="font-size: 11px; margin-top: 4px;">JPG, PNG or PDF</p>
+            <p style="font-size: 11px; margin-top: 4px;">JPG, PNG or PDF · Auto-sent with your order</p>
             <input type="file" id="prescription" accept="image/*,.pdf" onchange="showFileName(this)">
             <span id="fileName"></span>
           </label>
@@ -1877,7 +1877,7 @@
 
         <div class="form-note">
           <i class="fas fa-info-circle"></i>
-          <div>Your order details will open on WhatsApp. Attach your prescription photo there and send — we'll confirm within minutes.</div>
+          <div>Your order details and prescription image will be sent together on WhatsApp — no manual attaching needed. We'll confirm within minutes.</div>
         </div>
       </form>
     </div>
@@ -2038,7 +2038,7 @@
     <div class="success-icon"><i class="fas fa-check"></i></div>
     <h3>WhatsApp is Opening!</h3>
     <p>Your order details are ready to send on WhatsApp.</p>
-    <div class="note">
+    <div class="note" id="modalNote">
       <i class="fas fa-camera"></i>
       <strong>Don't forget:</strong> Attach your prescription image in the WhatsApp chat, then hit send. We'll confirm within 15 minutes.
     </div>
@@ -2088,37 +2088,104 @@
   }
 
   // ORDER FORM → WHATSAPP
-  function submitOrder(e) {
+  // =========================================================
+  // PRESCRIPTION AUTO-UPLOAD via ImgBB (Optional — Setup once)
+  // =========================================================
+  // Follow these steps ONCE to enable automatic prescription
+  // upload to WhatsApp (with clickable image link in message):
+  //
+  //   1. Go to https://imgbb.com and sign up (free)
+  //   2. Go to https://api.imgbb.com/ and copy your API key
+  //   3. Paste it below (inside the quotes)
+  //
+  // If left empty, the form works as before: customer opens
+  // WhatsApp and attaches prescription manually in the chat.
+  const IMGBB_API_KEY = 'a263fc7c184f23639869896c00ec90c4'; // <-- paste your key here
+  // =========================================================
+
+  async function uploadPrescriptionToImgBB(file) {
+    const formData = new FormData();
+    formData.append('image', file);
+    const resp = await fetch(
+      `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
+      { method: 'POST', body: formData }
+    );
+    if (!resp.ok) throw new Error('ImgBB upload failed: HTTP ' + resp.status);
+    const data = await resp.json();
+    if (!data.success) throw new Error('ImgBB upload failed: ' + (data.error?.message || 'unknown'));
+    return data.data.url; // direct image URL
+  }
+
+  async function submitOrder(e) {
     e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalBtnHTML = submitBtn.innerHTML;
+
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const urgency = document.getElementById('urgency').value;
     const address = document.getElementById('address').value.trim();
     const medicines = document.getElementById('medicines').value.trim();
-    const hasFile = document.getElementById('prescription').files.length > 0;
-    const fileName = hasFile ? document.getElementById('prescription').files[0].name : '';
+    const fileInput = document.getElementById('prescription');
+    const hasFile = fileInput.files.length > 0;
+    const fileName = hasFile ? fileInput.files[0].name : '';
 
-    let message = `*🏥 New Order — Anshu Medicine Centre*%0A%0A`;
-    message += `*👤 Name:* ${name}%0A`;
-    message += `*📱 Phone:* ${phone}%0A`;
-    message += `*⚡ Order Type:* ${urgency}%0A`;
-    message += `*📍 Address:* ${address}%0A`;
-    if (medicines) message += `*💊 Medicines:* ${medicines}%0A`;
-    message += `%0A`;
-    if (hasFile) {
-      message += `*📎 Prescription:* Selected (${fileName})%0A_I'll attach it in this chat._%0A`;
-    } else {
-      message += `_No prescription attached — please advise._%0A`;
+    // Try to upload prescription (if file + API key both available)
+    let prescriptionUrl = null;
+    let uploadFailed = false;
+    if (hasFile && IMGBB_API_KEY) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading prescription...';
+      try {
+        prescriptionUrl = await uploadPrescriptionToImgBB(fileInput.files[0]);
+      } catch (err) {
+        console.error('Prescription upload error:', err);
+        uploadFailed = true;
+      }
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHTML;
     }
-    message += `%0A_Sent via anshumedicine.com order form_`;
 
-    const encodedMsg = message.replace(/ /g, '%20');
-    const waUrl = `https://wa.me/917781008157?text=${encodedMsg}`;
+    // Build the WhatsApp message
+    let message = `*🏥 New Order — Anshu Medicine Centre*\n\n`;
+    message += `*👤 Name:* ${name}\n`;
+    message += `*📱 Phone:* ${phone}\n`;
+    message += `*⚡ Order Type:* ${urgency}\n`;
+    message += `*📍 Address:* ${address}\n`;
+    if (medicines) message += `*💊 Medicines:* ${medicines}\n`;
+    message += `\n`;
+
+    if (prescriptionUrl) {
+      // Best case: prescription auto-uploaded, direct link in WhatsApp
+      message += `*📎 Prescription:*\n${prescriptionUrl}\n`;
+    } else if (hasFile && uploadFailed) {
+      message += `*📎 Prescription:* ${fileName} (auto-upload failed)\n_I'll attach it directly in this chat._\n`;
+    } else if (hasFile) {
+      message += `*📎 Prescription:* Selected (${fileName})\n_I'll attach it in this chat._\n`;
+    } else {
+      message += `_No prescription attached — please advise._\n`;
+    }
+    message += `\n_Sent via anshumedicine.com order form_`;
+
+    const waUrl = `https://wa.me/917781008157?text=${encodeURIComponent(message)}`;
+
+    // Set modal reminder based on whether upload happened
+    const modalNote = document.getElementById('modalNote');
+    if (modalNote) {
+      if (prescriptionUrl) {
+        modalNote.innerHTML = '<i class="fas fa-check-circle"></i> <strong>Prescription already uploaded!</strong> The image link is included in the WhatsApp message. Just hit send.';
+      } else if (hasFile) {
+        modalNote.innerHTML = '<i class="fas fa-camera"></i> <strong>Don\'t forget:</strong> Attach your prescription image in the WhatsApp chat, then hit send.';
+      } else {
+        modalNote.innerHTML = '<i class="fas fa-info-circle"></i> Your order details are ready. Just hit send in WhatsApp.';
+      }
+    }
 
     document.getElementById('modalWaBtn').href = waUrl;
     document.getElementById('successModal').classList.add('active');
 
-    // Also open WhatsApp automatically after a short delay
+    // Auto-open WhatsApp after a short delay
     setTimeout(() => { window.open(waUrl, '_blank'); }, 800);
   }
 
