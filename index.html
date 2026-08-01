@@ -1861,12 +1861,12 @@
         </div>
 
         <div class="form-group">
-          <label>Attach Prescription <span style="color: var(--accent-green); font-weight: 700;">(recommended)</span></label>
+          <label>Prescription Photo <span style="color: var(--accent-green); font-weight: 700;">(if any)</span></label>
           <label class="file-upload">
             <i class="fas fa-file-image"></i>
             <p><strong>Click to select</strong> your prescription image</p>
-            <p style="font-size: 11px; margin-top: 4px;">JPG, PNG or PDF · Auto-sent with your order</p>
-            <input type="file" id="prescription" accept="image/*,.pdf" onchange="showFileName(this)">
+            <p style="font-size: 11px; margin-top: 4px;">You'll attach it in the WhatsApp chat</p>
+            <input type="file" id="prescriptionFile" accept="image/*,.pdf" onchange="showFileName(this)">
             <span id="fileName"></span>
           </label>
         </div>
@@ -1877,7 +1877,7 @@
 
         <div class="form-note">
           <i class="fas fa-info-circle"></i>
-          <div>Your order details and prescription image will be sent together on WhatsApp — no manual attaching needed. We'll confirm within minutes.</div>
+          <div>WhatsApp will open with your order details. <strong>Attach your prescription photo there</strong> and hit send — we'll confirm within minutes.</div>
         </div>
       </form>
     </div>
@@ -2088,79 +2088,19 @@
   }
 
   // ORDER FORM → WHATSAPP
-  // =========================================================
-  // PRESCRIPTION AUTO-UPLOAD via ImgBB (Optional — Setup once)
-  // =========================================================
-  // Follow these steps ONCE to enable automatic prescription
-  // upload to WhatsApp (with clickable image link in message):
-  //
-  //   1. Go to https://imgbb.com and sign up (free)
-  //   2. Go to https://api.imgbb.com/ and copy your API key
-  //   3. Paste it below (inside the quotes)
-  //
-  // If left empty, the form works as before: customer opens
-  // WhatsApp and attaches prescription manually in the chat.
-  const IMGBB_API_KEY = 'a263fc7c184f23639869896c00ec90c4'; // <-- paste your key here
-  // =========================================================
-
-  async function uploadPrescriptionToImgBB(file) {
-    const formData = new FormData();
-    formData.append('image', file);
-    const resp = await fetch(
-      `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
-      { method: 'POST', body: formData }
-    );
-    if (!resp.ok) throw new Error('ImgBB upload failed: HTTP ' + resp.status);
-    const data = await resp.json();
-    if (!data.success) throw new Error('ImgBB upload failed: ' + (data.error?.message || 'unknown'));
-    return data.data.url; // direct image URL
-  }
-
-  async function submitOrder(e) {
+  // Handle order form: open WhatsApp with pre-filled message.
+  // User will attach prescription image manually in the WhatsApp chat.
+  function submitOrder(e) {
     e.preventDefault();
-    const form = e.target;
-    const submitBtn = form.querySelector('.submit-btn');
-    const originalBtnHTML = submitBtn.innerHTML;
 
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const urgency = document.getElementById('urgency').value;
     const address = document.getElementById('address').value.trim();
     const medicines = document.getElementById('medicines').value.trim();
-    const fileInput = document.getElementById('prescription');
+    const fileInput = document.getElementById('prescriptionFile');
     const hasFile = fileInput.files.length > 0;
     const fileName = hasFile ? fileInput.files[0].name : '';
-
-    // Show modal IMMEDIATELY (before any async work) with a "preparing" state
-    const modal = document.getElementById('successModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalNote = document.getElementById('modalNote');
-    const modalWaBtn = document.getElementById('modalWaBtn');
-
-    modalTitle.textContent = 'Preparing your order...';
-    modalDesc.textContent = hasFile && IMGBB_API_KEY ? 'Uploading your prescription — just a moment.' : 'Almost done.';
-    modalNote.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Please wait...';
-    modalWaBtn.style.opacity = '0.5';
-    modalWaBtn.style.pointerEvents = 'none';
-    modalWaBtn.removeAttribute('href');
-    modal.classList.add('active');
-
-    // Also update the submit button to show state
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
-
-    // Try to upload prescription (if file + API key both available)
-    let prescriptionUrl = null;
-    let uploadFailed = false;
-    if (hasFile && IMGBB_API_KEY) {
-      try {
-        prescriptionUrl = await uploadPrescriptionToImgBB(fileInput.files[0]);
-      } catch (err) {
-        console.error('Prescription upload error:', err);
-        uploadFailed = true;
-      }
-    }
 
     // Build the WhatsApp message
     let message = `*🏥 New Order — Anshu Medicine Centre*\n\n`;
@@ -2169,41 +2109,29 @@
     message += `*⚡ Order Type:* ${urgency}\n`;
     message += `*📍 Address:* ${address}\n`;
     if (medicines) message += `*💊 Medicines:* ${medicines}\n`;
-    message += `\n`;
 
-    if (prescriptionUrl) {
-      message += `*📎 Prescription:*\n${prescriptionUrl}\n`;
-    } else if (hasFile && uploadFailed) {
-      message += `*📎 Prescription:* ${fileName} (auto-upload failed)\n_I'll attach it directly in this chat._\n`;
-    } else if (hasFile) {
-      message += `*📎 Prescription:* Selected (${fileName})\n_I'll attach it in this chat._\n`;
+    if (hasFile) {
+      message += `\n*📎 Prescription:* ${fileName}\n`;
+      message += `\n👉 *Please attach the prescription photo in this chat and hit send.*\n`;
+      message += `_Prescription ki photo yahan attach karke bhejein 🙏_\n`;
     } else {
-      message += `_No prescription attached — please advise._\n`;
+      message += `\n👉 *If you have a prescription, please attach it in this chat.*\n`;
+      message += `_Agar prescription hai to yahan photo attach karein._\n`;
     }
-    message += `\n_Sent via anshumedicine.com order form_`;
+    message += `\n_Sent via Anshu Medicine Centre order form_`;
 
     const waUrl = `https://wa.me/917781008157?text=${encodeURIComponent(message)}`;
 
-    // Now update modal to READY state — with clickable WhatsApp button
-    modalTitle.textContent = 'Ready to Send!';
-    modalDesc.textContent = 'Tap the button below to open WhatsApp.';
-    modalWaBtn.href = waUrl;
-    modalWaBtn.style.opacity = '1';
-    modalWaBtn.style.pointerEvents = 'auto';
-
-    if (prescriptionUrl) {
-      modalNote.innerHTML = '<i class="fas fa-check-circle" style="color:#3FB255;"></i> <strong>Prescription uploaded!</strong> The image link is already in the message. Just tap Open WhatsApp and hit send.';
-    } else if (hasFile && uploadFailed) {
-      modalNote.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#f4a261;"></i> Upload failed. Please attach your prescription photo in the WhatsApp chat manually.';
-    } else if (hasFile) {
-      modalNote.innerHTML = '<i class="fas fa-camera"></i> <strong>Don\'t forget:</strong> Attach your prescription image in the WhatsApp chat, then hit send.';
+    // Open WhatsApp directly (this IS a direct user gesture so nothing gets blocked)
+    // On mobile: navigate current tab so WhatsApp app opens.
+    // On desktop: open new tab so site stays open.
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = waUrl;
     } else {
-      modalNote.innerHTML = '<i class="fas fa-info-circle"></i> Your order details are ready. Just hit send in WhatsApp.';
+      const w = window.open(waUrl, '_blank');
+      if (!w) window.location.href = waUrl; // popup blocked fallback
     }
-
-    // Restore submit button
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalBtnHTML;
   }
 
   function closeModal() {
