@@ -2036,13 +2036,13 @@
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">&times;</button>
     <div class="success-icon"><i class="fas fa-check"></i></div>
-    <h3>WhatsApp is Opening!</h3>
-    <p>Your order details are ready to send on WhatsApp.</p>
+    <h3 id="modalTitle">WhatsApp is Opening!</h3>
+    <p id="modalDesc">Your order details are ready to send on WhatsApp.</p>
     <div class="note" id="modalNote">
       <i class="fas fa-camera"></i>
       <strong>Don't forget:</strong> Attach your prescription image in the WhatsApp chat, then hit send. We'll confirm within 15 minutes.
     </div>
-    <a href="#" id="modalWaBtn" class="btn btn-whatsapp" target="_blank" style="width: 100%; justify-content: center;">
+    <a href="#" id="modalWaBtn" class="btn btn-whatsapp" target="_blank" rel="noopener" style="width: 100%; justify-content: center;">
       <i class="fab fa-whatsapp"></i> Open WhatsApp Now
     </a>
   </div>
@@ -2131,20 +2131,35 @@
     const hasFile = fileInput.files.length > 0;
     const fileName = hasFile ? fileInput.files[0].name : '';
 
+    // Show modal IMMEDIATELY (before any async work) with a "preparing" state
+    const modal = document.getElementById('successModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalNote = document.getElementById('modalNote');
+    const modalWaBtn = document.getElementById('modalWaBtn');
+
+    modalTitle.textContent = 'Preparing your order...';
+    modalDesc.textContent = hasFile && IMGBB_API_KEY ? 'Uploading your prescription — just a moment.' : 'Almost done.';
+    modalNote.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Please wait...';
+    modalWaBtn.style.opacity = '0.5';
+    modalWaBtn.style.pointerEvents = 'none';
+    modalWaBtn.removeAttribute('href');
+    modal.classList.add('active');
+
+    // Also update the submit button to show state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+
     // Try to upload prescription (if file + API key both available)
     let prescriptionUrl = null;
     let uploadFailed = false;
     if (hasFile && IMGBB_API_KEY) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading prescription...';
       try {
         prescriptionUrl = await uploadPrescriptionToImgBB(fileInput.files[0]);
       } catch (err) {
         console.error('Prescription upload error:', err);
         uploadFailed = true;
       }
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHTML;
     }
 
     // Build the WhatsApp message
@@ -2157,7 +2172,6 @@
     message += `\n`;
 
     if (prescriptionUrl) {
-      // Best case: prescription auto-uploaded, direct link in WhatsApp
       message += `*📎 Prescription:*\n${prescriptionUrl}\n`;
     } else if (hasFile && uploadFailed) {
       message += `*📎 Prescription:* ${fileName} (auto-upload failed)\n_I'll attach it directly in this chat._\n`;
@@ -2170,23 +2184,26 @@
 
     const waUrl = `https://wa.me/917781008157?text=${encodeURIComponent(message)}`;
 
-    // Set modal reminder based on whether upload happened
-    const modalNote = document.getElementById('modalNote');
-    if (modalNote) {
-      if (prescriptionUrl) {
-        modalNote.innerHTML = '<i class="fas fa-check-circle"></i> <strong>Prescription already uploaded!</strong> The image link is included in the WhatsApp message. Just hit send.';
-      } else if (hasFile) {
-        modalNote.innerHTML = '<i class="fas fa-camera"></i> <strong>Don\'t forget:</strong> Attach your prescription image in the WhatsApp chat, then hit send.';
-      } else {
-        modalNote.innerHTML = '<i class="fas fa-info-circle"></i> Your order details are ready. Just hit send in WhatsApp.';
-      }
+    // Now update modal to READY state — with clickable WhatsApp button
+    modalTitle.textContent = 'Ready to Send!';
+    modalDesc.textContent = 'Tap the button below to open WhatsApp.';
+    modalWaBtn.href = waUrl;
+    modalWaBtn.style.opacity = '1';
+    modalWaBtn.style.pointerEvents = 'auto';
+
+    if (prescriptionUrl) {
+      modalNote.innerHTML = '<i class="fas fa-check-circle" style="color:#3FB255;"></i> <strong>Prescription uploaded!</strong> The image link is already in the message. Just tap Open WhatsApp and hit send.';
+    } else if (hasFile && uploadFailed) {
+      modalNote.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#f4a261;"></i> Upload failed. Please attach your prescription photo in the WhatsApp chat manually.';
+    } else if (hasFile) {
+      modalNote.innerHTML = '<i class="fas fa-camera"></i> <strong>Don\'t forget:</strong> Attach your prescription image in the WhatsApp chat, then hit send.';
+    } else {
+      modalNote.innerHTML = '<i class="fas fa-info-circle"></i> Your order details are ready. Just hit send in WhatsApp.';
     }
 
-    document.getElementById('modalWaBtn').href = waUrl;
-    document.getElementById('successModal').classList.add('active');
-
-    // Auto-open WhatsApp after a short delay
-    setTimeout(() => { window.open(waUrl, '_blank'); }, 800);
+    // Restore submit button
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnHTML;
   }
 
   function closeModal() {
