@@ -12,7 +12,7 @@ Live-ready static website for **Anshu Medicine Centre**, Phulwarisharif, Patna. 
 | `privacy-policy.html` | Privacy Policy (required by WhatsApp Business API) |
 | `refund-policy.html` | Refund & Return Policy (required by WhatsApp Business API) |
 | `terms-and-conditions.html` | Terms & Conditions (required by WhatsApp Business API) |
-| `logo.png` | AMC logo with **transparent background** (for social sharing / OG image) |
+| `logo.png` | New AMC logo (cross + AMC wordmark) with **transparent background** (for social sharing / OG image) |
 | `logo-square.png` | Square logo (for social sharing / OG image) |
 | `render.yaml` | Render deployment configuration |
 | `README.md` | This file |
